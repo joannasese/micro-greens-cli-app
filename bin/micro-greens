@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 
-puts "Who wants to eat some salad?"
+require './lib/micro_greens'
+MicroGreens::CLI.new.call
