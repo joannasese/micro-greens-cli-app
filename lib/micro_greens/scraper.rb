@@ -1,11 +1,12 @@
 class MicroGreens::Scraper
 
   def html
-    Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
+    doc = Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
+    binding.pry
   end
 
   def scrape_micro_greens
-    self.html.css("div.c-tile__name product-name")
+    name = doc.css("div.c-tile__col a.c-tile__link div.c-tile__name").first.text.gsub("\n","")
   end
 
   def micro_greens

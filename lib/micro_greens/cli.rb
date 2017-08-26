@@ -13,9 +13,14 @@ class MicroGreens::CLI
   def menu
     input = String.new
     while input != "exit"
-      puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type 'exit'."
+      puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type 'exit'.".colorize(:green)
       input = gets.strip.downcase
+
       case input
+
+      #when scraped name includes input
+        #puts microgreens info from micro_green_profile
+        #puts MicroGreens::MicroGreenProfile.name
       when "arugula"
         puts "More information on arugula"
       when "radish"
@@ -35,7 +40,7 @@ class MicroGreens::CLI
   end
 
   def goodbye
-    puts "Enjoy your salad!"
+    puts "Enjoy your salad!".colorize(:green)
   end
 
 end

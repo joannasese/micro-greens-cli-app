@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
 
 require './lib/micro_greens'
-MicroGreens::CLI.new.call
+# MicroGreens::CLI.new.call commented out for testing purposes
+
+#below for testing purposes
+MicroGreens::Scraper.new.html
