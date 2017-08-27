@@ -20,11 +20,25 @@ class MicroGreens::MicroGreenProfile
     @doc = MicroGreens::Scraper.new.html
   end
 
-  def profile
+  def profiles
+#NAMES for comparison
+# doc.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.split("\n\n") #array of names
+# doc.css("div.c-tile__col a.c-tile__link div").map {|text| text['Text']} #trying to accomplish in other way
+#LINKS
+# doc.css("div.c-tile__col a.c-tile__link") #gives a large Array
+# doc.css("div.c-tile__col a.c-tile__link").first
+    extensions = doc.css("div.c-tile__col a").collect {|link| link['href'] }#gives array of links
+    extensions.collect do |extension|
+      Nokogiri::HTML(open("http://www.johnnyseeds.com#{extension}"))
+    end
+
+
+    # binding.pry
+
     #individual profile page linked from main page
-    href = doc.css("a.c-tile__link").attribute("href").value
-    link = "http://www.johnnyseeds.com#{href}"
-    @profile = Nokogiri::HTML(open(link))
+    # href = doc.css("a.c-tile__link").attribute("href").value
+    # link = "http://www.johnnyseeds.com#{href}"
+    # @profile = Nokogiri::HTML(open(link))
   end
 
   def names
@@ -32,16 +46,18 @@ class MicroGreens::MicroGreenProfile
     @names = doc.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.split("\n\n")
   end
 
-  def name
-    #individual micro-green
-    @name = names.collect {|name| name.strip}
-      # binding.pry
-  end
+  # def name
+  #   #individual micro-green
+  #   @name = names.collect {|name| name.strip}
+  #     # binding.pry
+  # end
 
   def description
-    d1 = profile.css("p.u-text-size-md").text
-    d2 = profile.css("div.c-content-toggle__content-wrapper").text.strip
-    @description = "#{d1} #{d2}"
-
+    profiles.collect do |profile|
+      d1 = profile.css("p.u-text-size-md").text
+      d2 = profile.css("div.c-content-toggle__content-wrapper").text.strip
+      @description = "#{d1} #{d2}"
+    end
+    @description
   end
 end

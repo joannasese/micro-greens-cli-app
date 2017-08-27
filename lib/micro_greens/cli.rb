@@ -12,18 +12,27 @@ class MicroGreens::CLI
 
   def menu
     input = String.new
+    # binding.pry
     while input != "exit"
       puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type 'exit'.".colorize(:green)
       input = gets.strip.downcase
 
-      MicroGreens::MicroGreenProfile.new.names.each do |name|
-        if name.downcase.strip.include?(input)
-          puts name
-          puts "Description: #{MicroGreens::MicroGreenProfile.new.description}"
-        else
-          puts "Sorry, we do not have information about that micro-green."
-        end
+
+      if MicroGreens::MicroGreenProfile.new.names.detect {|name| name.downcase.include?(input)}
+        puts MicroGreens::MicroGreenProfile.new.names.select {|name| name.downcase.include?(input)}
+        puts MicroGreens::MicroGreenProfile.new.description
+      else
+        puts "Sorry"
       end
+
+      # MicroGreens::MicroGreenProfile.new.names.each do |name|
+      #   if name.downcase.strip.include?(input)
+      #     puts name
+      #     puts "Description: #{MicroGreens::MicroGreenProfile.new.description}"
+      #   else
+      #     puts "Sorry, we do not have information about that micro-green."
+      #   end
+      # end
     end
   end
 

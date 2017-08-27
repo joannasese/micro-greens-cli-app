@@ -9,5 +9,6 @@ MicroGreens::CLI.new.call
 # MicroGreens::Scraper.new.menu
 # MicroGreens::CLI.new.menu
 # MicroGreens::MicroGreenProfile.new.doc
-# MicroGreens::MicroGreenProfile.new.profile
+# MicroGreens::MicroGreenProfile.new.profiles
 # MicroGreens::MicroGreenProfile.new.name
+# MicroGreens::MicroGreenProfile.new.description
