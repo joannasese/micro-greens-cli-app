@@ -19,8 +19,14 @@ class MicroGreens::CLI
 
 
       if MicroGreens::MicroGreenProfile.new.names.detect {|name| name.downcase.include?(input)}
+        puts ""
         puts MicroGreens::MicroGreenProfile.new.names.select {|name| name.downcase.include?(input)}
-        puts MicroGreens::MicroGreenProfile.new.description
+        puts ""
+
+
+        #above returns all names that match input
+        puts "Name of individual microgreen"
+        puts MicroGreens::MicroGreenProfile.new.description #should be description
       else
         puts "Sorry"
       end
