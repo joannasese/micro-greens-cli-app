@@ -16,17 +16,13 @@ class MicroGreens::CLI
       puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type 'exit'.".colorize(:green)
       input = gets.strip.downcase
 
-      case input
-
-      #when scraped name includes input
-        #puts microgreens info from micro_green_profile
-        #puts MicroGreens::MicroGreenProfile.name
-      when "arugula"
-        puts "More information on arugula"
-      when "radish"
-        puts "More information on radish"
-      else
-        puts "Sorry, we don't have information on that micro-green. Try again."
+      MicroGreens::MicroGreenProfile.new.names.each do |name|
+        if name.downcase.strip.include?(input)
+          puts name
+          puts "Description: #{MicroGreens::MicroGreenProfile.new.description}"
+        else
+          puts "Sorry, we do not have information about that micro-green."
+        end
       end
     end
   end

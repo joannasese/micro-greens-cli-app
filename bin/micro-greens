@@ -1,7 +1,13 @@
 #!/usr/bin/env ruby
 
 require './lib/micro_greens'
-# MicroGreens::CLI.new.call commented out for testing purposes
+MicroGreens::CLI.new.call
+# above commented out for testing purposes
 
-#below for testing purposes
-MicroGreens::Scraper.new.html
+# below for testing purposes
+# MicroGreens::Scraper.new.html
+# MicroGreens::Scraper.new.menu
+# MicroGreens::CLI.new.menu
+# MicroGreens::MicroGreenProfile.new.doc
+# MicroGreens::MicroGreenProfile.new.profile
+# MicroGreens::MicroGreenProfile.new.name
