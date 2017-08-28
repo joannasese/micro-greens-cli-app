@@ -32,7 +32,6 @@ class MicroGreens::MicroGreenProfile
       Nokogiri::HTML(open("http://www.johnnyseeds.com#{extension}"))
     end
 
-
     # binding.pry
 
     #individual profile page linked from main page
