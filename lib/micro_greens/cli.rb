@@ -8,7 +8,7 @@ class MicroGreens::CLI
 
   def call
     puts "Who wants to eat some salad?".colorize(:green)
-    puts "Our selection of micro-greens includes:".colorize(:green)
+    puts "Our most popular micro greens are:".colorize(:green)
     list_greens
     menu
     goodbye
@@ -40,7 +40,6 @@ class MicroGreens::CLI
       puts doc.css("dd.c-facts__definition")[1].text.strip
       puts "Growing information:".colorize(:green)
       puts doc.css("div.c-accordion__body span")[1].text
-      menu
     elsif input == 0
     else
       puts "Sorry, we do not have information about that micro-green. Do try again!".colorize(:green)
