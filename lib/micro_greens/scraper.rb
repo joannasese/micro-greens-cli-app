@@ -10,11 +10,9 @@ class MicroGreens::Scraper
     doc.css("div.o-layout__col").each do |tile|
       name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text
       link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
-
       micro_greens_tiles << {name: name, link: link}
     end
     micro_greens_tiles
   end
-
 
 end

@@ -29,8 +29,6 @@ class MicroGreens::CLI
     # input = gets.strip.downcase
     input = gets.to_i
 
-    doc = Nokogiri::HTML(open("http://www.johnnyseeds.com"))
-
     if input <= 18 && input > 0
       puts homepage.sort_by{|hash| hash[:name]}[input-1][:name]
       doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
@@ -45,9 +43,6 @@ class MicroGreens::CLI
       menu
     end
   end
-
-# binding.pry
-
 
   def goodbye
     puts "Enjoy your salad!".colorize(:green)
