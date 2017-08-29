@@ -34,8 +34,14 @@ class MicroGreens::CLI
       doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
       puts doc.css("p.u-text-size-md").text
       puts doc.css("div.c-content-toggle__content-wrapper").text.strip
-      puts "profile page days to maturity"
+      puts doc.css("dd.c-facts__definition").text
       puts "culture"
+
+      doc.css("div.c-accordion__body span")[1].text
+
+      #<Nokogiri::XML::Element:0x15ba378 name="span" attributes=[#<Nokogiri::
+XML::Attr:0x15ba314 name="style">] children=[#<Nokogiri::XML::Text:0x15b7efc
+      binding.pry
       menu
     elsif input == 0
     else
