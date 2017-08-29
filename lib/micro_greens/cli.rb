@@ -30,24 +30,23 @@ class MicroGreens::CLI
     input = gets.to_i
 
     if input <= 18 && input > 0
-      puts homepage.sort_by{|hash| hash[:name]}[input-1][:name]
+      puts "Micro Green:".colorize(:green)
+      puts homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
       doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
+      puts "Description:".colorize(:green)
       puts doc.css("p.u-text-size-md").text
       puts doc.css("div.c-content-toggle__content-wrapper").text.strip
-      puts doc.css("dd.c-facts__definition").text
-      puts "culture"
-
-      doc.css("div.c-accordion__body span")[1].text
-
-      #<Nokogiri::XML::Element:0x15ba378 name="span" attributes=[#<Nokogiri::
-XML::Attr:0x15ba314 name="style">] children=[#<Nokogiri::XML::Text:0x15b7efc
-      binding.pry
+      puts "Days to maturity:".colorize(:green)
+      puts doc.css("dd.c-facts__definition")[1].text.strip
+      puts "Growing information:".colorize(:green)
+      puts doc.css("div.c-accordion__body span")[1].text
       menu
     elsif input == 0
     else
       puts "Sorry, we do not have information about that micro-green. Do try again!".colorize(:green)
       menu
     end
+
   end
 
   def goodbye
