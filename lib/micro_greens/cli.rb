@@ -18,6 +18,12 @@ class MicroGreens::CLI
     Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
   end
 
+  def list_greens
+    homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
+      puts "#{index+1}. #{hash[:name].strip}"
+    end
+  end
+
   def menu
     input = String.new
     puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type 'exit'.".colorize(:green)
@@ -26,9 +32,9 @@ class MicroGreens::CLI
     homepage.each do |hash|
       if hash[:name].downcase.include?(input)
         doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{hash[:link]}"))
-        hash[:name]
-        doc.css("p.u-text-size-md").text
-        doc.css("div.c-content-toggle__content-wrapper").text.strip
+        puts hash[:name]
+        puts doc.css("p.u-text-size-md").text
+        puts doc.css("div.c-content-toggle__content-wrapper").text.strip
         puts "profile page days to maturity"
         puts "culture"
         menu
@@ -38,12 +44,11 @@ class MicroGreens::CLI
         menu
       end
     end
+
   end
 
 
-  def list_greens
-    homepage.sort_by{|hash| hash[:name]}.each {|hash| puts hash[:name].strip}
-  end
+
 
   def goodbye
     puts "Enjoy your salad!".colorize(:green)
