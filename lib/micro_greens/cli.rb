@@ -34,8 +34,11 @@ class MicroGreens::CLI
     # homepage.sort_by{|hash| hash[:name]}.each do |hash|
       if input <= 18 && input > 0
         puts homepage.sort_by{|hash| hash[:name]}[input-1][:name]
+        doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
+        puts doc.css("p.u-text-size-md").text
+        puts doc.css("div.c-content-toggle__content-wrapper").text.strip
         menu
-        # puts link = hash[input-1][:link]
+        # link = homepage.sort_by{|hash| hash[:name]}[input-1][:link]
 
       # puts doc.css(list_greens[input-1][:link])
 
