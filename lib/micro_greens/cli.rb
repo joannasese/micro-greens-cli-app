@@ -31,35 +31,19 @@ class MicroGreens::CLI
 
     doc = Nokogiri::HTML(open("http://www.johnnyseeds.com"))
 
-    # homepage.sort_by{|hash| hash[:name]}.each do |hash|
-      if input <= 18 && input > 0
-        puts homepage.sort_by{|hash| hash[:name]}[input-1][:name]
-        doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
-        puts doc.css("p.u-text-size-md").text
-        puts doc.css("div.c-content-toggle__content-wrapper").text.strip
-        menu
-        # link = homepage.sort_by{|hash| hash[:name]}[input-1][:link]
-
-      # puts doc.css(list_greens[input-1][:link])
-
-
-    # homepage.each do |hash|
-    #   if hash[:name].downcase.include?(input)
-    #     doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{hash[:link]}"))
-    #     puts hash[:name]
-    #     puts doc.css("p.u-text-size-md").text
-    #     puts doc.css("div.c-content-toggle__content-wrapper").text.strip
-    #     puts "profile page days to maturity"
-    #     puts "culture"
-    #     menu
-      elsif input == 0
-
-      else
-        puts "Sorry, we do not have information about that micro-green. Do try again!".colorize(:green)
-        menu
-
-      end
-
+    if input <= 18 && input > 0
+      puts homepage.sort_by{|hash| hash[:name]}[input-1][:name]
+      doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
+      puts doc.css("p.u-text-size-md").text
+      puts doc.css("div.c-content-toggle__content-wrapper").text.strip
+      puts "profile page days to maturity"
+      puts "culture"
+      menu
+    elsif input == 0
+    else
+      puts "Sorry, we do not have information about that micro-green. Do try again!".colorize(:green)
+      menu
+    end
   end
 
 # binding.pry
