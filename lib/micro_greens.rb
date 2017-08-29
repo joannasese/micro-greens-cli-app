@@ -12,3 +12,4 @@ require 'open-uri'
 require_relative "./micro_greens/version"
 require_relative './micro_greens/cli'
 require_relative './micro_greens/scraper'
+require_relative './micro_greens/micro_green_profile'
