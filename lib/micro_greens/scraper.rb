@@ -15,4 +15,10 @@ class MicroGreens::Scraper
     micro_greens_tiles
   end
 
+  def list_greens
+    homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
+       puts "#{index+1}. #{hash[:name].strip}"
+    end
+  end
+
 end
