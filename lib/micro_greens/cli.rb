@@ -20,34 +20,46 @@ class MicroGreens::CLI
 
   def list_greens
     homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
-      puts "#{index+1}. #{hash[:name].strip}"
+       puts "#{index+1}. #{hash[:name].strip}"
     end
   end
 
   def menu
-    input = String.new
-    puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type 'exit'.".colorize(:green)
-    input = gets.strip.downcase
+    puts "Type in a kind of micro-green you would like to learn about. When you are done learning, type '0' to exit.".colorize(:green)
+    # input = gets.strip.downcase
+    input = gets.to_i
 
-    homepage.each do |hash|
-      if hash[:name].downcase.include?(input)
-        doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{hash[:link]}"))
-        puts hash[:name]
-        puts doc.css("p.u-text-size-md").text
-        puts doc.css("div.c-content-toggle__content-wrapper").text.strip
-        puts "profile page days to maturity"
-        puts "culture"
+    doc = Nokogiri::HTML(open("http://www.johnnyseeds.com"))
+
+    # homepage.sort_by{|hash| hash[:name]}.each do |hash|
+      if input <= 18 && input > 0
+        puts homepage.sort_by{|hash| hash[:name]}[input-1][:name]
         menu
-      elsif input == "exit"
+        # puts link = hash[input-1][:link]
+
+      # puts doc.css(list_greens[input-1][:link])
+
+
+    # homepage.each do |hash|
+    #   if hash[:name].downcase.include?(input)
+    #     doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{hash[:link]}"))
+    #     puts hash[:name]
+    #     puts doc.css("p.u-text-size-md").text
+    #     puts doc.css("div.c-content-toggle__content-wrapper").text.strip
+    #     puts "profile page days to maturity"
+    #     puts "culture"
+    #     menu
+      elsif input == 0
+
       else
         puts "Sorry, we do not have information about that micro-green. Do try again!".colorize(:green)
         menu
+
       end
-    end
 
   end
 
-
+# binding.pry
 
 
   def goodbye

@@ -9,7 +9,6 @@ class MicroGreens::Scraper
     micro_greens_tiles = Array.new
     doc.css("div.o-layout__col").each do |tile|
       name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text
-      # link = "http://www.johnnyseeds.com#{tile.css("a").attribute("href").value}"
       link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
 
       micro_greens_tiles << {name: name, link: link}

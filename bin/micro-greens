@@ -7,7 +7,7 @@ MicroGreens::CLI.new.call
 # below for testing purposes
 # MicroGreens::Scraper.new.html
 # MicroGreens::Scraper.new
-# MicroGreens::CLI.new.menu
+# MicroGreens::CLI.new
 # MicroGreens::MicroGreenProfile.new
 # MicroGreens::MicroGreenProfile.new.profiles
 # MicroGreens::MicroGreenProfile.new.name
