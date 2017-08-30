@@ -21,4 +21,9 @@ class MicroGreens::Scraper
     end
   end
 
+  def name(input)
+    puts homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
+  end
+
+
 end
