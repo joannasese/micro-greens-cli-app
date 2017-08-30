@@ -5,6 +5,7 @@ class MicroGreens::Scraper
     @name = name
   end
 
+#HOMEPAGE
   def html
     Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
   end
@@ -26,12 +27,19 @@ class MicroGreens::Scraper
     end
   end
 
-  def name(input)
-    @name = homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
+  def select(input)
+    homepage.sort_by{|hash| hash[:name]}[input-1]
   end
 
+  def name(input)
+    # @name = homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
+    @name = select(input)[:name].strip
+  end
+
+#INDIVIDUAL PROFILE PAGES
   def new_from_homepage(input)
     @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
+    # @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
   end
 
   def description_one(input)
