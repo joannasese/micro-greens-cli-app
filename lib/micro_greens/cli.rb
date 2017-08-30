@@ -6,9 +6,9 @@ class MicroGreens::CLI
     @scraper = MicroGreens::Scraper.new
   end
 
-  def homepage
-    @homepage = scraper.homepage
-  end
+  # def homepage
+  #   @homepage = scraper.homepage
+  # end
 
   def call
     puts "Who wants to eat some salad?".colorize(:green)
