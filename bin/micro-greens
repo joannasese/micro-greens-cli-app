@@ -2,13 +2,3 @@
 
 require './lib/micro_greens'
 MicroGreens::CLI.new.call
-# above commented out for testing purposes
-
-# below for testing purposes
-# MicroGreens::Scraper.new.html
-# MicroGreens::Scraper.new
-# MicroGreens::CLI.new
-# MicroGreens::MicroGreenProfile.new
-# MicroGreens::MicroGreenProfile.new.profiles
-# MicroGreens::MicroGreenProfile.new.name
-# MicroGreens::MicroGreenProfile.new.test

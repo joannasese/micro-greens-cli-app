@@ -1,8 +1,9 @@
 class MicroGreens::Scraper
   attr_accessor :name, :new_from_homepage, :description_one, :description_two, :maturity, :grow_info
 
-  def initialize(name=nil)
+  def initialize(name=nil, new_from_homepage=nil)
     @name = name
+    @new_from_homepage = new_from_homepage
   end
 
 #HOMEPAGE
@@ -32,14 +33,12 @@ class MicroGreens::Scraper
   end
 
   def name(input)
-    # @name = homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
     @name = select(input)[:name].strip
   end
 
 #INDIVIDUAL PROFILE PAGES
   def new_from_homepage(input)
-    @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
-    # @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
+    @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{select(input)[:link]}"))
   end
 
   def description_one(input)
