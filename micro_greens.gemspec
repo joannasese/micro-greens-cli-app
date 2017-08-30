@@ -5,7 +5,7 @@ require 'micro_greens/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "micro_greens"
-  spec.version       = MicroGreens::VERSION
+  spec.version       = MicroGreens::
   spec.authors       = ["'Joanna Sese'"]
   spec.email         = ["'jmgsese@gmail.com'"]
 
@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   # spec.files         = `git ls-files -z`.split("\x0").reject do |f|
   #   f.match(%r{^(test|spec|features)/})
   # end
-  spec.bindir        = "exe"
+  spec.bindir        = 'bin'
   spec.executables   = micro_greens
   spec.require_paths = ["lib"]
 
