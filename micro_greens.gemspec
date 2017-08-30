@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["'jmgsese@gmail.com'"]
 
   spec.summary       = %q{Micro Greens}
-  spec.homepage      = "https://github.com/joannasese/micro-greens-cli-app"
+  spec.homepage      = "https://rubygems.org/gems/micro_greens/"
   spec.license       = "MIT"
 
   # # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -22,14 +22,17 @@ Gem::Specification.new do |spec|
   #     "public gem pushes."
   # end
 
-  spec.files = spec.files = Dir['lib/   *.rb'] + Dir['bin/*']
+  spec.files = ["lib/micro_greens.rb", "bin/micro-greens.rb", "lib/micro_greens.rb", "lib/micro_greens/cli.rb", "lib/micro_greens/scraper.rb", "confib/environment.rb"]
   # spec.files         = `git ls-files -z`.split("\x0").reject do |f|
   #   f.match(%r{^(test|spec|features)/})
   # end
   spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables   = micro_greens
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", ">= 0"
+  spec.add_development_dependency "nokogiri", ">= 0"
+  spec.add_development_dependency "pry", ">= 0"
 end
