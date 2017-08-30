@@ -13,7 +13,6 @@ class MicroGreens::CLI
   def call
     puts "Who wants to eat some salad?".colorize(:green)
     puts "Our most popular micro greens are:".colorize(:green)
-    # list_greens
     scraper.list_greens
     menu
     goodbye
@@ -23,12 +22,6 @@ class MicroGreens::CLI
     Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
   end
 
-  # def list_greens
-  #   homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
-  #      puts "#{index+1}. #{hash[:name].strip}"
-  #   end
-  # end
-
   def menu
     puts "Type in the number corresponding to the micro green you would like to learn about. When you are done learning, type '0' to exit.".colorize(:green)
     # input = gets.strip.downcase
@@ -36,7 +29,8 @@ class MicroGreens::CLI
 
     if input <= 18 && input > 0
       puts "Micro Green:".colorize(:green)
-      puts MicroGreens::Scraper.new.name(input)
+      # puts MicroGreens::Scraper.new.name(input)
+      puts scraper.name(input)
       doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
       puts "Description:".colorize(:green)
       puts doc.css("p.u-text-size-md").text

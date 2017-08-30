@@ -1,5 +1,7 @@
 class MicroGreens::Scraper
 
+
+
   def html
     Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
   end
@@ -22,7 +24,10 @@ class MicroGreens::Scraper
   end
 
   def name(input)
-    puts homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
+    @name = homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
+  end
+
+  def description
   end
 
 
