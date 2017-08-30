@@ -29,16 +29,19 @@ class MicroGreens::CLI
 
     if input <= 18 && input > 0
       puts "Micro Green:".colorize(:green)
-      # puts MicroGreens::Scraper.new.name(input)
       puts scraper.name(input)
       doc = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
       puts "Description:".colorize(:green)
       puts doc.css("p.u-text-size-md").text
+      # puts scraper.description_one(input)
       puts doc.css("div.c-content-toggle__content-wrapper").text.strip
+      # puts scraper.description_two(input)
       puts "Days to maturity:".colorize(:green)
       puts doc.css("dd.c-facts__definition")[1].text.strip
+      # puts scraper.maturity(input)
       puts "Growing information:".colorize(:green)
       puts doc.css("div.c-accordion__body span")[1].text
+      # puts scraper.grow_info(input)
       menu
     elsif input == 0
     else

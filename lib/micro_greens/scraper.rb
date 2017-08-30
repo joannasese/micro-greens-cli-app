@@ -1,6 +1,5 @@
 class MicroGreens::Scraper
-
-
+  attr_accessor :name
 
   def html
     Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
@@ -27,8 +26,24 @@ class MicroGreens::Scraper
     @name = homepage.sort_by{|hash| hash[:name]}[input-1][:name].strip
   end
 
-  def description
+  def new_from_index(input)
+    @new_from_index = Nokogiri::HTML(open("http://www.johnnyseeds.com#{homepage.sort_by{|hash| hash[:name]}[input-1][:link]}"))
   end
 
+  def description_one(input)
+    @description_one = new_from_index(input).css("p.u-text-size-md").text
+  end
+
+  def description_two(input)
+    @description_two = new_from_index(input).css("div.c-content-toggle__content-wrapper").text.strip
+  end
+
+  def maturity(input)
+    @maturity = new_from_index(input).css("dd.c-facts__definition")[1].text.strip
+  end
+
+  def grow_info(input)
+    @grow_info = new_from_index(input).css("div.c-accordion__body span")[1].text
+  end
 
 end
