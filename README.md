@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'micro_greens'
+gem 'micro-greens'
 ```
 
 And then execute:
