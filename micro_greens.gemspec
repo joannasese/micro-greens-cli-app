@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Micro Greens}
   spec.homepage      = "https://rubygems.org/gems/micro_greens/"
   spec.license       = "MIT"
-  spec.files         = ["lib/micro_greens.rb", "bin/micro-greens", "lib/micro_greens.rb", "lib/micro_greens/cli.rb", "lib/micro_greens/scraper.rb", "config/environment.rb"]
+  spec.files         = ["bin/micro-greens", "lib/micro_greens.rb", "lib/micro_greens/cli.rb", "lib/micro_greens/scraper.rb", "config/environment.rb"]
 
   spec.bindir        = 'bin'
   spec.executables   = ["micro-greens"]
