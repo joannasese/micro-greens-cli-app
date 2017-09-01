@@ -1,0 +1,29 @@
+
+[1mFrom:[0m /home/jmgsese-93305/code/labs/micro-greens-cli-app/lib/micro_greens/cli.rb @ line 27 MicroGreens::CLI#menu:
+
+    [1;34m21[0m: [32mdef[0m [1;34mmenu[0m
+    [1;34m22[0m:   puts [31m[1;31m"[0m[31mType in the number corresponding to the micro green you would like to learn about.[1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m23[0m:   puts [31m[1;31m"[0m[31mWhen you are done learning, type '0' to exit.[1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m24[0m:   input = gets.to_i
+    [1;34m25[0m: 
+    [1;34m26[0m:   [32mif[0m input <= [1;34m18[0m && input > [1;34m0[0m
+ => [1;34m27[0m:     binding.pry
+    [1;34m28[0m:   [1;34m# if input <= scraper.homepage.size && input > 0[0m
+    [1;34m29[0m:     puts [31m[1;31m"[0m[31mMicro Green:[1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m30[0m:     puts scraper.name(input)
+    [1;34m31[0m:     puts [31m[1;31m"[0m[31mDescription:[1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m32[0m:     puts scraper.description_one(input)
+    [1;34m33[0m:     puts scraper.description_two(input)
+    [1;34m34[0m:     puts [31m[1;31m"[0m[31mDays to maturity:[1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m35[0m:     puts scraper.maturity(input)
+    [1;34m36[0m:     puts [31m[1;31m"[0m[31mGrowing information:[1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m37[0m:     puts scraper.grow_info(input)
+    [1;34m38[0m:     menu
+    [1;34m39[0m:   [32melsif[0m input == [1;34m0[0m
+    [1;34m40[0m:   [32melse[0m
+    [1;34m41[0m:     puts [31m[1;31m"[0m[31mSorry, we do not have information about that micro green. Do try again![1;31m"[0m[31m[0m.colorize([33m:green[0m)
+    [1;34m42[0m:     menu
+    [1;34m43[0m:   [32mend[0m
+    [1;34m44[0m: 
+    [1;34m45[0m: [32mend[0m
+
