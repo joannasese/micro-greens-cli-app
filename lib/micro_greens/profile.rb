@@ -18,9 +18,8 @@ class MicroGreens::Profile
     @@all << self
   end
 
-  def select(input)
-    # homepage.sort_by{|hash| hash[:name]}[input-1]
-    MicroGreens::Profile.all[input-1]
+  def self.select(input)
+    self.all[input-1]
   end
 
   # def name(input) #spitting out name in wrong order
@@ -28,9 +27,9 @@ class MicroGreens::Profile
   # end
 
   #INDIVIDUAL PROFILE PAGES
-  def new_from_homepage(input)
-    @new_from_homepage = Nokogiri::HTML(open("#{select(input).link}"))
-    # @new_from_homepage = Nokogiri::HTML(open(self.link))
+  def new_from_homepage
+    # @new_from_homepage = Nokogiri::HTML(open("#{select(input).link}"))
+    @new_from_homepage ||= Nokogiri::HTML(open(self.link))
   end
 
   def description_one(input)
