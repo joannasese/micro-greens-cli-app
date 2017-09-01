@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/micro_greens'
+require 'bundler/setup'
+require 'micro_greens'
 MicroGreens::CLI.new.call
