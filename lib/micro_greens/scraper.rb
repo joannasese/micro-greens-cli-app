@@ -1,4 +1,7 @@
 class MicroGreens::Scraper
+  #for each plant preview (tile) on homepage
+  #get tile's data
+  #instantiate a Profile based on that data
   attr_accessor :name, :new_from_homepage, :description_one, :description_two, :maturity, :grow_info
 
   def initialize(name=nil, new_from_homepage=nil)
