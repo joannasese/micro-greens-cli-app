@@ -20,7 +20,9 @@ class MicroGreens::CLI
   end
 
   def list_greens #list of greens in alphabetical order, from homepage
-    MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
+    # MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
+    MicroGreens::Profile.all.each.with_index do |profile, index|
+
       puts "#{index+1}. #{profile.name}"
     end
   end

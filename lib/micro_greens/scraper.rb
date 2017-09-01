@@ -38,26 +38,26 @@ class MicroGreens::Scraper
     @name = select(input).name.strip
   end
 
-#INDIVIDUAL PROFILE PAGES
-  def new_from_homepage
-    # @new_from_homepage = Nokogiri::HTML(open("#{select(input)[:link]}"))
-    @new_from_homepage = Nokogiri::HTML(open(self.url)
-  end
-
-  def description_one(input)
-    @description_one = new_from_homepage(input).css("p.u-text-size-md").text
-  end
-
-  def description_two(input)
-    @description_two = new_from_homepage(input).css("div.c-content-toggle__content-wrapper").text.strip
-  end
-
-  def maturity(input)
-    @maturity = new_from_homepage(input).css("dd.c-facts__definition")[1].text.strip
-  end
-
-  def grow_info(input)
-    @grow_info = new_from_homepage(input).css("div.c-accordion__body span")[1].text
-  end
+# #INDIVIDUAL PROFILE PAGES
+#   def new_from_homepage
+#     # @new_from_homepage = Nokogiri::HTML(open("#{select(input)[:link]}"))
+#     @new_from_homepage = Nokogiri::HTML(open(self.url)
+#   end
+#
+#   def description_one(input)
+#     @description_one = new_from_homepage(input).css("p.u-text-size-md").text
+#   end
+#
+#   def description_two(input)
+#     @description_two = new_from_homepage(input).css("div.c-content-toggle__content-wrapper").text.strip
+#   end
+#
+#   def maturity(input)
+#     @maturity = new_from_homepage(input).css("dd.c-facts__definition")[1].text.strip
+#   end
+#
+#   def grow_info(input)
+#     @grow_info = new_from_homepage(input).css("div.c-accordion__body span")[1].text
+#   end
 
 end
