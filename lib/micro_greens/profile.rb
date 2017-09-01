@@ -19,12 +19,8 @@ class MicroGreens::Profile
   end
 
   def self.by_index(input)
-    self.all[input-1]
+    @@all[input-1]
   end
-
-  # def name(input) #spitting out name in wrong order
-  #   @name = select(input).name.strip
-  # end
 
   #INDIVIDUAL PROFILE PAGES
   def new_from_homepage(input)
