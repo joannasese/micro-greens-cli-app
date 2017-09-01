@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'bundler/setup'
-require 'micro_greens'
+# require 'bundler/setup'
+require_relative '../lib/micro_greens.rb'
 MicroGreens::CLI.new.call
-
-require 'irb'
-IRB.start
