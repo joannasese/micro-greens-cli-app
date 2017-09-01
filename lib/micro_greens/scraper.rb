@@ -13,13 +13,11 @@ class MicroGreens::Scraper
 
   def homepage #main page with all micro-greens
     doc = html.css("div#search-result-items")
-    micro_greens_tiles = Array.new
-    doc.css("div.o-layout__col").each do |tile|
+    doc.css("div.o-layout__col").collect do |tile|
       name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text
       link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
-      micro_greens_tiles << {name: name, link: link}
+      {name: name, link: link}
     end
-    micro_greens_tiles
   end
 
   def list_greens #list of greens in alphabetical order, from homepage
