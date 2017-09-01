@@ -6,6 +6,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'colorize'
+require 'pry'
 
 require './lib/micro_greens/scraper.rb'
 require './lib/micro_greens/version'
