@@ -40,7 +40,14 @@ class MicroGreens::CLI
       puts scraper.maturity(input)
       puts "Growing information:".colorize(:green)
       puts scraper.grow_info(input)
-      menu
+
+      puts "Would you like to learn even more about this micro green? Type 'Y' or 'N'.".colorize(:green)
+      input = gets.chomp.downcase
+      if input == "y"
+        MicroGreens::Profile.new.open_in_browser
+      else
+        menu
+      end
     elsif input == 0
     else
       puts "Sorry, we do not have information about that micro green. Do try again!".colorize(:green)
