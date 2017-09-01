@@ -39,7 +39,6 @@ class MicroGreens::CLI
       puts "Sorry, we do not have information about that micro green. Do try again!".colorize(:green)
       menu
     end
-
   end
 
   def goodbye
