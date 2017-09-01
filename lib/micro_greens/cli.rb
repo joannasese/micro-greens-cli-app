@@ -30,6 +30,8 @@ class MicroGreens::CLI
     puts "When you are done learning, type '0' to exit.".colorize(:green)
     input = gets.to_i
 
+    micro_green = scraper.select(input)
+
     if input <= scraper.homepage.size && input > 0
       puts "Micro Green:".colorize(:green)
       puts scraper.name(input)

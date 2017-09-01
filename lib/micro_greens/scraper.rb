@@ -16,7 +16,7 @@ class MicroGreens::Scraper
       profile.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.strip
       profile.link = "http://www.johnnyseeds.com/vegetables/micro-greens#{tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")}"
       profile.save
-      {name: profile.name, link: profile.link}
+      {name: profile.name, link: profile.link} #won't need this hash after revision
     end
   end
 
@@ -29,16 +29,19 @@ class MicroGreens::Scraper
   # end
 
   def select(input)
-    homepage.sort_by{|hash| hash[:name]}[input-1]
+    # homepage.sort_by{|hash| hash[:name]}[input-1]
+    MicroGreens::Profile.all.sort_by{|profile| profile.name}[input-1]
+    binding.pry
   end
 
   def name(input)
-    @name = select(input)[:name].strip
+    @name = select(input).name.strip
   end
 
 #INDIVIDUAL PROFILE PAGES
-  def new_from_homepage(input)
-    @new_from_homepage = Nokogiri::HTML(open("#{select(input)[:link]}"))
+  def new_from_homepage
+    # @new_from_homepage = Nokogiri::HTML(open("#{select(input)[:link]}"))
+    @new_from_homepage = Nokogiri::HTML(open(self.url)
   end
 
   def description_one(input)
