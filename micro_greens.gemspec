@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.files         = ["bin/micro-greens", "lib/micro_greens.rb", "lib/micro_greens/cli.rb", "lib/micro_greens/scraper.rb", "config/environment.rb"]
 
   spec.bindir        = 'bin'
-  spec.executables   = ["micro-greens"]
+  spec.executables   = "micro-greens"
   spec.require_paths = ["lib"]
   spec.required_ruby_version = "~> 2.3.4"
 
