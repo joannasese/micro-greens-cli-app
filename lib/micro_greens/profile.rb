@@ -10,6 +10,10 @@ class MicroGreens::Profile
     @@all
   end
 
+  def open_in_browser
+    system("open '#{link}'")
+  end
+
   def save
     @@all << self
   end

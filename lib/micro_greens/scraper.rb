@@ -14,7 +14,7 @@ class MicroGreens::Scraper
       profile = MicroGreens::Profile.new
 
       profile.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.strip
-      profile.link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
+      profile.link = "http://www.johnnyseeds.com/vegetables/micro-greens#{tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")}"
       profile.save
       {name: profile.name, link: profile.link}
     end
@@ -38,7 +38,7 @@ class MicroGreens::Scraper
 
 #INDIVIDUAL PROFILE PAGES
   def new_from_homepage(input)
-    @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{select(input)[:link]}"))
+    @new_from_homepage = Nokogiri::HTML(open("#{select(input)[:link]}"))
   end
 
   def description_one(input)
