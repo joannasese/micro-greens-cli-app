@@ -7,7 +7,7 @@ class MicroGreens::Profile
   #   @new_from_homepage = new_from_homepage
   # end
   def self.all
-    @@all.sort_by{|profile| profile.name}
+    @@all = @@all.sort_by{|profile| profile.name}
   end
 
   def open_in_browser
@@ -18,7 +18,7 @@ class MicroGreens::Profile
     @@all << self
   end
 
-  def self.select(input)
+  def self.by_index(input)
     self.all[input-1]
   end
 
@@ -27,9 +27,8 @@ class MicroGreens::Profile
   # end
 
   #INDIVIDUAL PROFILE PAGES
-  def new_from_homepage
-    # @new_from_homepage = Nokogiri::HTML(open("#{select(input).link}"))
-    @new_from_homepage ||= Nokogiri::HTML(open(self.link))
+  def new_from_homepage(input)
+    @new_from_homepage = Nokogiri::HTML(open(@@all[input-1].link))
   end
 
   def description_one(input)

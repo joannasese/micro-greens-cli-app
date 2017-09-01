@@ -30,7 +30,7 @@ class MicroGreens::CLI
     puts "When you are done learning, type '0' to exit.".colorize(:green)
     input = gets.to_i
 
-    micro_green = MicroGreens::Profile.select(input)
+    micro_green = MicroGreens::Profile.by_index(input)
 
     if input <= scraper.homepage.size && input > 0
       puts "Micro Green:".colorize(:green)
@@ -38,6 +38,7 @@ class MicroGreens::CLI
 
       puts "Description:".colorize(:green)
       puts MicroGreens::Profile.new.description_one(input)
+      # puts Nokogiri::HTML(open())
 
       puts scraper.description_two(input)
       puts "Days to maturity:".colorize(:green)
