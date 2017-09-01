@@ -2,12 +2,6 @@ class MicroGreens::Scraper
   #for each plant preview (tile) on homepage
   #get tile's data
   #instantiate a Profile based on that data
-  attr_accessor :name, :new_from_homepage, :description_one, :description_two, :maturity, :grow_info
-
-  def initialize(name=nil, new_from_homepage=nil)
-    @name = name
-    @new_from_homepage = new_from_homepage
-  end
 
 #HOMEPAGE
   def html
@@ -17,9 +11,13 @@ class MicroGreens::Scraper
   def homepage #main page with all micro-greens
     doc = html.css("div#search-result-items")
     doc.css("div.o-layout__col").collect do |tile|
-      name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text
-      link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
-      {name: name, link: link}
+      profile = MicroGreens::Profile.new
+
+      profile.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text
+      profile.link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
+      {name: profile.name, link: profile.link}
+      profile.save
+      binding.pry
     end
   end
 
