@@ -6,7 +6,7 @@
 
 ## Usage
 
-    Run micro-greens after installing the gem.
+    Run micro_greens after installing the gem.
 
 ## Development
 
