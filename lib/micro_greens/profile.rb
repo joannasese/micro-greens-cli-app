@@ -6,6 +6,9 @@ class MicroGreens::Profile
   #   @name = name
   #   @new_from_homepage = new_from_homepage
   # end
+  def self.all
+    @@all
+  end
 
   def save
     @@all << self

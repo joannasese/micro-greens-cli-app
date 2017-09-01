@@ -13,17 +13,18 @@ class MicroGreens::Scraper
     doc.css("div.o-layout__col").collect do |tile|
       profile = MicroGreens::Profile.new
 
-      profile.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text
+      profile.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.strip
       profile.link = tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")
-      {name: profile.name, link: profile.link}
       profile.save
-      binding.pry
+      {name: profile.name, link: profile.link}
     end
   end
 
   def list_greens #list of greens in alphabetical order, from homepage
-    homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
-       puts "#{index+1}. #{hash[:name].strip}"
+    # homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
+    #    puts "#{index+1}. #{hash[:name].strip}"
+    MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
+      puts "#{index+1}. #{profile.name}"
     end
   end
 

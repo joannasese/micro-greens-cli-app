@@ -9,6 +9,7 @@ class MicroGreens::CLI
   def call
     puts "Who wants to eat some salad?".colorize(:green)
     puts "Our most popular micro greens are:".colorize(:green)
+    scraper.homepage
     scraper.list_greens
     menu
     goodbye
