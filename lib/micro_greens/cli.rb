@@ -33,13 +33,11 @@ class MicroGreens::CLI
     profile = MicroGreens::Profile.new
     micro_green = MicroGreens::Profile.by_index(input)
 
-
     if input <= scraper.homepage.size && input > 0
       puts "Micro Green:".colorize(:green)
       puts micro_green.name
       puts "Description:".colorize(:green)
-      puts profile.description_one(input)
-      puts profile.description_two(input)
+      puts "#{profile.description_one(input)} #{profile.description_two(input)}"
       puts "Days to maturity:".colorize(:green)
       puts profile.maturity(input)
       puts "Growing information:".colorize(:green)
