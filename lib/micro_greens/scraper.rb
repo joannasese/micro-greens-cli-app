@@ -20,13 +20,13 @@ class MicroGreens::Scraper
     end
   end
 
-  def list_greens #list of greens in alphabetical order, from homepage
-    # homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
-    #    puts "#{index+1}. #{hash[:name].strip}"
-    MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
-      puts "#{index+1}. #{profile.name}"
-    end
-  end
+  # def list_greens #list of greens in alphabetical order, from homepage
+  #   # homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
+  #   #    puts "#{index+1}. #{hash[:name].strip}"
+  #   MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
+  #     puts "#{index+1}. #{profile.name}"
+  #   end
+  # end
 
   def select(input)
     homepage.sort_by{|hash| hash[:name]}[input-1]

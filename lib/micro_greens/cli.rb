@@ -10,13 +10,19 @@ class MicroGreens::CLI
     puts "Who wants to eat some salad?".colorize(:green)
     puts "Our most popular micro greens are:".colorize(:green)
     scraper.homepage
-    scraper.list_greens
+    list_greens
     menu
     goodbye
   end
 
   def html
     Nokogiri::HTML(open("http://www.johnnyseeds.com/vegetables/micro-greens"))
+  end
+
+  def list_greens #list of greens in alphabetical order, from homepage
+    MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
+      puts "#{index+1}. #{profile.name}"
+    end
   end
 
   def menu
