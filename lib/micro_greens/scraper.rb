@@ -28,15 +28,7 @@ class MicroGreens::Scraper
   #   end
   # end
 
-  def select(input)
-    # homepage.sort_by{|hash| hash[:name]}[input-1]
-    MicroGreens::Profile.all.sort_by{|profile| profile.name}[input-1]
-    binding.pry
-  end
-
-  def name(input)
-    @name = select(input).name.strip
-  end
+  
 
 # #INDIVIDUAL PROFILE PAGES
 #   def new_from_homepage

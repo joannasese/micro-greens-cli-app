@@ -20,9 +20,7 @@ class MicroGreens::CLI
   end
 
   def list_greens #list of greens in alphabetical order, from homepage
-    # MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
     MicroGreens::Profile.all.each.with_index do |profile, index|
-
       puts "#{index+1}. #{profile.name}"
     end
   end
@@ -32,13 +30,13 @@ class MicroGreens::CLI
     puts "When you are done learning, type '0' to exit.".colorize(:green)
     input = gets.to_i
 
-    micro_green = scraper.select(input)
+    micro_green = MicroGreens::Profile.new.select(input)
 
     if input <= scraper.homepage.size && input > 0
       puts "Micro Green:".colorize(:green)
-      puts scraper.name(input)
+      puts micro_green.name
       puts "Description:".colorize(:green)
-      puts scraper.description_one(input)
+      puts MicroGreens::Profile.new.description_one(input)
       puts scraper.description_two(input)
       puts "Days to maturity:".colorize(:green)
       puts scraper.maturity(input)
