@@ -39,6 +39,7 @@ class MicroGreens::Scraper
 #INDIVIDUAL PROFILE PAGES
   def new_from_homepage(input)
     @new_from_homepage = Nokogiri::HTML(open("http://www.johnnyseeds.com#{select(input)[:link]}"))
+    binding.pry
   end
 
   def description_one(input)
