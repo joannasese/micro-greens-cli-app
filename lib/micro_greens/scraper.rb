@@ -1,7 +1,7 @@
 class MicroGreens::Scraper
   #for each plant preview (tile) on homepage
   #get tile's data
-  #instantiate a Profile based on that data
+  #instantiate a Green based on that data
 
 #HOMEPAGE
   def html
@@ -10,25 +10,32 @@ class MicroGreens::Scraper
 
   def homepage #main page with all micro-greens
     doc = html.css("div#search-result-items")
-    doc.css("div.o-layout__col").collect do |tile|
-      profile = MicroGreens::Profile.new
+    doc.css("div.o-layout__col").each do |tile|
+      green = MicroGreens::Green.new
 
-      profile.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.strip
-      profile.link = "http://www.johnnyseeds.com/vegetables/micro-greens#{tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")}"
-      profile.save
-      {name: profile.name, link: profile.link} #won't need this hash after revision
+      green.name = tile.css("div.c-tile__col a.c-tile__link div.c-tile__name").text.strip
+      green.link = "http://www.johnnyseeds.com/vegetables/micro-greens#{tile.css("a").attribute("href").value.gsub("/vegetables/micro-greens","")}"
+
+       #won't need this hash after revision
     end
+  end
+
+  def self.scrape_green_details(green)
+    doc = Nokogiri::HTML(open(green.link))
+
+    green.maturity = doc.css("dd.c-facts__definition")[1].text.strip
+    
   end
 
   # def list_greens #list of greens in alphabetical order, from homepage
   #   # homepage.sort_by{|hash| hash[:name]}.each.with_index do |hash, index|
   #   #    puts "#{index+1}. #{hash[:name].strip}"
-  #   MicroGreens::Profile.all.sort_by{|profile| profile.name}.each.with_index do |profile, index|
-  #     puts "#{index+1}. #{profile.name}"
+  #   MicroGreens::Green.all.sort_by{|green| green.name}.each.with_index do |green, index|
+  #     puts "#{index+1}. #{green.name}"
   #   end
   # end
 
-  
+
 
 # #INDIVIDUAL PROFILE PAGES
 #   def new_from_homepage

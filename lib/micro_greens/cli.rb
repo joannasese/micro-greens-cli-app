@@ -20,8 +20,8 @@ class MicroGreens::CLI
   end
 
   def list_greens #list of greens in alphabetical order, from homepage
-    MicroGreens::Profile.all.each.with_index do |profile, index|
-      puts "#{index+1}. #{profile.name}"
+    MicroGreens::Green.sort_by_name.each.with_index do |micro_green, index|
+      puts "#{index+1}. #{micro_green.name}"
     end
   end
 
@@ -30,23 +30,24 @@ class MicroGreens::CLI
     puts "When you are done learning, type '0' to exit.".colorize(:green)
     input = gets.to_i
 
-    profile = MicroGreens::Profile.new
-    micro_green = MicroGreens::Profile.by_index(input)
+    micro_green = MicroGreens::Green.by_index(input-1)
 
-    if input <= scraper.homepage.size && input > 0
+    # if input <= MicroGreens::Green.all.size && input > 0
+    if input.between?(1, MicroGreens::Green.all.size)
+      MicroGreens::Scraper.scrape_green_details(micro_green)
       puts "Micro Green:".colorize(:green)
       puts micro_green.name
       puts "Description:".colorize(:green)
-      puts "#{profile.description_one(input)} #{profile.description_two(input)}"
+      puts "#{micro_green.description_one(input)} #{micro_green.description_two(input)}"
       puts "Days to maturity:".colorize(:green)
-      puts profile.maturity(input)
+      puts micro_green.maturity(input)
       puts "Growing information:".colorize(:green)
-      puts profile.grow_info(input)
+      puts micro_green.grow_info(input)
 
       puts "Would you like to learn even more about this micro green? Type 'Y' or 'N'.".colorize(:green)
       input = gets.chomp.downcase
       if input == "y"
-        MicroGreens::Profile.new.open_in_browser
+        micro_green.open_in_browser
       else
         menu
       end
