@@ -6,7 +6,8 @@
 
 ## Usage
 
-    Run micro_greens after installing the gem.
+    Clone repo from https://github.com/joannasese/micro-greens-cli-app
+    Run ./bin/micro_greens
 
 ## Development
 
