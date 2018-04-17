@@ -1,12 +1,9 @@
 # MicroGreens::CLI::Gem
 
-## Installation
-
-    $ gem install micro_greens
-
 ## Usage
 
     Clone repo from https://github.com/joannasese/micro-greens-cli-app
+
     Run ./bin/micro_greens
 
 ## Development
